@@ -1,0 +1,10 @@
+/Weights/*.pt
+/Weights/*.pth
+/runs/*
+/*/__pycache__
+/test.*
+/*/test.*
+/.vimspector.json
+/*/.vimspector.json
+/Data
+!/Data/.pascal_voc_classes.json
