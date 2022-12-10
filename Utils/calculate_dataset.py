@@ -9,7 +9,7 @@ import os
 
 def CaculateDataTxt( txtPath, dataSetDir ):
 # {{{
-    # 创建my_data.txt用来记录图片的路径valAnnotationDir
+    # 创建my_train_(val)data.txt用来记录图片的路径AnnotationDir
     with open( txtPath, 'w' ) as w:
 
         for fileName in os.listdir( dataSetDir ):

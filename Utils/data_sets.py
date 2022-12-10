@@ -16,7 +16,7 @@ for orientation in ExifTags.TAGS.keys():
 
         break# }}}
 
-def exifSize( img ):
+def ExifSize( img ):
 # {{{
     '''
         获取图像的高宽
@@ -383,7 +383,7 @@ class Data_Set( Dataset ):
 
                 imgFiles = self.imgFiles
 
-            s = [ exifSize( Image.open( f ) ) for f in imgFiles ]
+            s = [ ExifSize( Image.open( f ) ) for f in imgFiles ]
             np.savetxt( sp, s, fmt = '%g' ) #type:ignore
 
         # 记录每张图片的原始尺寸

@@ -48,6 +48,58 @@ def CreateModules( moduleDefs, imgSize ):
             if isinstance( k, int ):
 
                 modules.add_module(
+                                      'conv2Dw',
+                                      nn.Conv2d(
+                                                   in_channels  = outputFilters[ -1 ],
+                                                   out_channels = outputFilters[ -1 ],
+                                                   kernel_size  = k,
+                                                   stride       = stride,
+                                                   padding      = k // 2 if mdef[ 'pad' ] else 0,
+                                                   groups       = outputFilters[ -1 ],
+                                                   bias         = not bn
+                                               )
+                                  )
+                modules.add_module(
+                                      'conv2Pw',
+                                      nn.Conv2d(
+                                                   in_channels  = outputFilters[ -1 ],
+                                                   out_channels = filters,
+                                                   kernel_size  = 1,
+                                                   stride       = 1,
+                                                   bias         = not bn
+                                               )
+                                  )
+            else:
+
+                raise TypeError( 'conv2d filters size must be in type' )
+
+            if bn:
+
+                modules.add_module( 'BatchNorm2d', nn.BatchNorm2d( filters ) )
+
+            else:
+
+                # 这个网络除了最后的三个predictor之外的所有的convolutional都是有bn层的
+                routs.append( i )
+
+            if mdef[ 'activation' ] == 'leaky':
+
+                modules.add_module( 'activation', nn.LeakyReLU( 0.1, inplace = True ) )
+
+            else:
+
+                pass
+
+        elif mdef[ 'type' ] == 'predconvolutional':
+
+            bn = mdef[ 'batch_normalize' ]
+            filters = mdef[ 'filters' ]
+            k = mdef[ 'size' ]
+            stride = mdef[ 'stride' ] if 'stride' in mdef else ( mdef[ 'stride_y' ], mdef[ 'stride_x' ] )
+
+            if isinstance( k, int ):
+
+                modules.add_module(
                                       'Conv2d',
                                       nn.Conv2d(
                                                    in_channels  = outputFilters[ - 1 ],

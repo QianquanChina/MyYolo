@@ -319,7 +319,7 @@ if __name__ == '__main__':
     parser.add_argument( '--hyp'         , type = str , default = './Config/hyp.yaml'     , help = '*.yaml path'                    )
     parser.add_argument( '--weights'     , type = str , default = ''                      , help = 'initial weights path'           )
     parser.add_argument( '--multiScale'  , type = bool, default = True                    , help = 'adjust imgSize every 10 batchs' )
-    parser.add_argument( '--saveBest'    , type = bool, default = False                   , help = 'only save best checkpoint'      )
+    parser.add_argument( '--saveBest'    , type = bool, default = True                    , help = 'only save best checkpoint'      )
     parser.add_argument( '--freezeLayers', type = bool, default = False                   , help = 'Freeze non output layers'       )
 
     parser.add_argument( '--rect'     , default = False, action = 'store_true', help = 'rectangular training'             )

@@ -34,6 +34,10 @@ def ParseModelCfg( path ):
 
                 modelCfg[ -1 ][ 'batch_normalize' ] = 0
 
+            if modelCfg[ -1 ][ 'type' ] == 'predconvolutional':
+
+                modelCfg[ -1 ][ 'batch_normalize' ] = 0
+
         else:
 
             key, val = line.split( '=' )

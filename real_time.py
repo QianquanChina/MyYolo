@@ -56,8 +56,12 @@ def Main():
             pred = Nms( pred, confThres = 0.1, iouThres = 0.6, mutiLabel = True )[ 0 ]
             t3 = time.time()
             print( 'nms spend time : ', t3 - t2 )
+
+            if pred is None:
+
+                continue
+
             pred[ :, : 4 ] = ScaleCoords( img.shape[ 2 : ], pred[ :, : 4 ], imgOrigin.shape ).round()
-            print( pred.shape )
 
             bboxes = pred[ :, : 4 ].detach().cpu().numpy()
             scores = pred[ :, 4 ].detach().cpu().numpy()

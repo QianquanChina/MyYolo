@@ -7,4 +7,5 @@
 /.vimspector.json
 /*/.vimspector.json
 /Data
+/VocData
 !/Data/.pascal_voc_classes.json
