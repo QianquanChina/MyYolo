@@ -13,7 +13,7 @@ def Main():
 # {{{
     imgSize = 512
     cfgPath = './Config/my_yolov3.cfg'
-    imgPath = './1.jpg'
+    imgPath = './2.jpg'
     jsonPath = './Data/pascal_voc_classes.json'
     weightsPath = './Weights/best.pt'
     assert os.path.exists( cfgPath     ), 'cfg file {} dose not exists.'.format( cfgPath )
